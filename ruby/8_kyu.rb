@@ -23,3 +23,18 @@ end
 def solution(str)
   str.reverse
 end
+
+# find the smallest integer in the array
+def find_smallest_int(arr)
+  arr.min
+end
+
+# beginner series #3 sum of numbers
+def find_smallest_int(arr)
+  arr.min
+end
+
+# ones and zeros
+def binary_array_to_number(arr)
+  arr.join.to_i(2)
+end 
