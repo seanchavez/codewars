@@ -52,7 +52,20 @@ def DNA_strand(dna)
   complement
 end
 
-# friend or foe?
+# friend or foe
 def friend(friends)
   friends.select {|friend| friend.length == 4}
+end
+
+# find the next perfect square
+def find_next_square(sq)
+  root = Math.sqrt(sq)
+  return -1 if root % 1 != 0
+  (root + 1) ** 2
+end
+
+# sort the odd
+def sort_array(source_array)
+  sorted_odds = source_array.select {|n| n.odd?}.sort
+  source_array.map {|n| n.odd? ? sorted_odds.shift : n}
 end
