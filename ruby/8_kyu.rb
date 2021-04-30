@@ -38,3 +38,21 @@ end
 def binary_array_to_number(arr)
   arr.join.to_i(2)
 end 
+
+# complementary dna
+def DNA_strand(dna)
+  complement_table = {
+    "A" => "T",
+    "C" => "G",
+    "G" => "C",
+    "T" => "A"
+  }
+  complement = ""
+  dna.each_char {|char| complement += complement_table[char]}
+  complement
+end
+
+# friend or foe?
+def friend(friends)
+  friends.select {|friend| friend.length == 4}
+end
