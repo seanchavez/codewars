@@ -23,3 +23,32 @@ def find_even_index(arr)
   end
   -1
 end
+
+# def unique_in_order(iterable)
+#   uniques = []
+#   seq = seq.split('') if seq.instance_of?(String)
+#   seq.each_with_index do |el, i|
+#       p "{ el: #{el}, i: #{i} }"
+#     if i == 0 && seq[i + 1] != el
+#       p "{ wrong_prev: #{seq[i - 1]}, next: #{seq[i + 1]}, el: #{el}, i: #{i} }"
+#       uniques.push(el)
+#     elsif seq[i - 1] != el && seq[i + 1] != el
+#       p "{ prev: #{seq[i - 1]}, next: #{seq[i + 1]}, el: #{el}, i: #{i} }"
+#       uniques.push(el)
+#     end
+#     p "{ uniques: #{uniques} }"
+#   end
+#   uniques
+# end
+
+def unique_in_order(iterable)
+  uniques = []
+  iterable = iterable.split('') if iterable.instance_of?(String)
+  iterable.each {|el| uniques << el unless uniques.last == el}
+  uniques
+end
+
+p unique_in_order('AAAABBBCCDAABBB') #== ['A', 'B', 'C', 'D', 'A', 'B']
+p unique_in_order('ABBCcAD')         #== ['A', 'B', 'C', 'c', 'A', 'D']
+p unique_in_order([1,2,2,3,3])       #== [1,2,3]
+
