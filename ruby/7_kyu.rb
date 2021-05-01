@@ -52,3 +52,22 @@ p unique_in_order('AAAABBBCCDAABBB') #== ['A', 'B', 'C', 'D', 'A', 'B']
 p unique_in_order('ABBCcAD')         #== ['A', 'B', 'C', 'c', 'A', 'D']
 p unique_in_order([1,2,2,3,3])       #== [1,2,3]
 
+def expanded_form(num)
+  digits = num.to_s.chars
+  pow = digits.length - 1
+  expanded = ""
+  digits.each do |char|
+    if char == "0"
+      pow -= 1
+      next
+    end
+    expanded += "#{char.to_i * 10 ** pow} "
+    expanded += "+ " unless pow == 0 
+    pow -= 1
+  end
+  expanded.strip
+end
+
+p expanded_form(12); # Should return '10 + 2'
+p expanded_form(42); # Should return '40 + 2'
+p expanded_form(70304); # Should return '70000 + 300 + 4'
