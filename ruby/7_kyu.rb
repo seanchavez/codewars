@@ -67,14 +67,8 @@ p iq_test("2 4 7 8 10") #=> 3 # Third number is odd, while the rest of the numbe
 p iq_test("1 2 1 1") #=> 2 # Second number is even, while the rest of the numbers are odd
 
 def dig_pow(n, p)
-  p -= 1
-  sum = n.digits.reverse.map {|d| p += 1; d ** p}.sum 
-  k = 1
-  until n * k > sum
-    return k if n * k == sum
-    k += 1
-  end
-  -1
+  sum = n.digits.reverse.map.with_index {|d, i| d ** (p + i)}.sum 
+  sum % n == 0 ? (sum / n) : -1
 end
 
 p dig_pow(89, 1) # should return 1 since 8¹ + 9² = 89 = 89 * 1
