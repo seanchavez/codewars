@@ -55,3 +55,29 @@ p expanded_form(12); # Should return '10 + 2'
 p expanded_form(42); # Should return '40 + 2'
 p expanded_form(70304); # Should return '70000 + 300 + 4'
 p expanded_form(90000)
+
+def iq_test(numbers)
+  digits = numbers.split
+  evens = digits.select {|n| n.to_i.even?}
+  evens.size == 1 ? digits.index(evens.first) + 1 : digits.index {|el| el.to_i.odd?} + 1
+end
+
+p iq_test("2 4 7 8 10") #=> 3 # Third number is odd, while the rest of the numbers are even
+
+p iq_test("1 2 1 1") #=> 2 # Second number is even, while the rest of the numbers are odd
+
+def dig_pow(n, p)
+  p -= 1
+  sum = n.digits.reverse.map {|d| p += 1; d ** p}.sum 
+  k = 1
+  until n * k > sum
+    return k if n * k == sum
+    k += 1
+  end
+  -1
+end
+
+p dig_pow(89, 1) # should return 1 since 8¹ + 9² = 89 = 89 * 1
+p dig_pow(92, 1) # should return -1 since there is no k such as 9¹ + 2² equals 92 * k
+p dig_pow(695, 2) # should return 2 since 6² + 9³ + 5⁴= 1390 = 695 * 2
+p dig_pow(46288, 3) # should return 51 since 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51
