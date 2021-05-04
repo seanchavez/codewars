@@ -77,18 +77,18 @@ p dig_pow(695, 2) # should return 2 since 6² + 9³ + 5⁴= 1390 = 695 * 2
 p dig_pow(46288, 3) # should return 51 since 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51
 
 def tickets(bills)
-  ticket_price = 25
-  cash_drawer = {
-    100 => 0,
-    50 => 0,
-    25 => 0
-  }
+  cash_drawer = {100 => 0, 50 => 0, 25 => 0} 
   bills.each do |bill|
-    if bill > ticket_price
-      if bill == 50 then return "NO" if cash_drawer[25] < 1 end
+    if bill > 25
+      if bill == 50 
+        cash_drawer[25] < 1 ? (return "NO") : (cash_drawer[25] -= 1)
+      end
       if bill == 100 
-        return "NO" if cash_drawer[50] < 1 && cash_drawer[25] < 3
-        return "NO" if cash_drawer[50] > 0 && cash_drawer[25] < 1
+        if cash_drawer[50] == 0
+          cash_drawer[25] < 3 ? (return "NO") : (cash_drawer[25] -= 3)
+        else
+          cash_drawer[25] < 1 ? (return "NO") : (cash_drawer[25] -= 1)
+        end
       end
     end
     cash_drawer[bill] += 1
