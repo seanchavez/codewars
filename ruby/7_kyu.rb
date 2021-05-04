@@ -75,3 +75,27 @@ p dig_pow(89, 1) # should return 1 since 8¹ + 9² = 89 = 89 * 1
 p dig_pow(92, 1) # should return -1 since there is no k such as 9¹ + 2² equals 92 * k
 p dig_pow(695, 2) # should return 2 since 6² + 9³ + 5⁴= 1390 = 695 * 2
 p dig_pow(46288, 3) # should return 51 since 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51
+
+def tickets(bills)
+  ticket_price = 25
+  cash_drawer = {
+    100 => 0,
+    50 => 0,
+    25 => 0
+  }
+  bills.each do |bill|
+    if bill > ticket_price
+      if bill == 50 then return "NO" if cash_drawer[25] < 1 end
+      if bill == 100 
+        return "NO" if cash_drawer[50] < 1 && cash_drawer[25] < 3
+        return "NO" if cash_drawer[50] > 0 && cash_drawer[25] < 1
+      end
+    end
+    cash_drawer[bill] += 1
+  end
+  "YES"
+end
+
+p tickets([25, 25, 50]) # => YES 
+p tickets([25, 100]) # => NO. Vasya will not have enough money to give change to 100 dollars
+p tickets([25, 25, 50, 50, 100]) # => NO. Vasya will not have the right bills to give 75 dollars of change (you can't make two bills of 25 from one of 50)
