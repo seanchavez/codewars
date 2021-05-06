@@ -77,6 +77,7 @@ p dig_pow(695, 2) # should return 2 since 6² + 9³ + 5⁴= 1390 = 695 * 2
 p dig_pow(46288, 3) # should return 51 since 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51
 
 def tickets(bills)
+  return "NO" if bills.empty?
   cash_drawer = {100 => 0, 50 => 0, 25 => 0} 
   bills.each do |bill|
     if bill > 25
@@ -99,3 +100,5 @@ end
 p tickets([25, 25, 50]) # => YES 
 p tickets([25, 100]) # => NO. Vasya will not have enough money to give change to 100 dollars
 p tickets([25, 25, 50, 50, 100]) # => NO. Vasya will not have the right bills to give 75 dollars of change (you can't make two bills of 25 from one of 50)
+p tickets([])
+
