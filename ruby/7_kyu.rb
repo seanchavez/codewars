@@ -101,3 +101,14 @@ p tickets([25, 100]) # => NO. Vasya will not have enough money to give change to
 p tickets([25, 25, 50, 50, 100]) # => NO. Vasya will not have the right bills to give 75 dollars of change (you can't make two bills of 25 from one of 50)
 p tickets([25, 25, 25, 25, 25, 25, 25, 50, 50, 50, 100, 100, 100, 100])
 
+def sum_dig_pow(a, b)
+  (a..b).filter do |n|
+    n.digits.reverse.map.with_index {|d, i| d ** (i + 1)}.sum == n
+  end
+end
+
+p sum_dig_pow(1, 10) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+p sum_dig_pow(1, 100) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 89]
+
+p sum_dig_pow(90, 100) == []
