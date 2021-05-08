@@ -36,6 +36,11 @@ p unique_in_order('AAAABBBCCDAABBB') #== ['A', 'B', 'C', 'D', 'A', 'B']
 p unique_in_order('ABBCcAD')         #== ['A', 'B', 'C', 'c', 'A', 'D']
 p unique_in_order([1,2,2,3,3])       #== [1,2,3]
 
+# sum of two lowest positive integers
+def sum_two_smallest_numbers(numbers)
+  numbers.min(2).sum
+end
+
 def expanded_form(num)
   digits = num.to_s.chars
   pow = digits.length - 1
@@ -112,3 +117,8 @@ p sum_dig_pow(1, 10) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
 p sum_dig_pow(1, 100) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 89]
 
 p sum_dig_pow(90, 100) == []
+
+def domain_name(url)
+  i = index('.'), j = rindex('.')
+  url[i...j]
+end
