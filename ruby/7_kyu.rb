@@ -99,3 +99,8 @@ def array_diff(list_a, list_b)
 end
 
 p array_diff([1,2],[1]) == [2]
+
+def up_array(arr)
+  return nil if arr.empty? || arr.any? {|el| el < 0 || el > 9}
+  (arr.join.to_i + 1).digits.reverse
+end
