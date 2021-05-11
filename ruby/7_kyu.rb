@@ -92,3 +92,10 @@ def domain_name(url)
   i = index('.'), j = rindex('.')
   url[i...j]
 end
+
+
+def array_diff(list_a, list_b)
+  list_a.select {|el| !list_b.include?(el)}
+end
+
+p array_diff([1,2],[1]) == [2]
