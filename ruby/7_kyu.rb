@@ -104,3 +104,13 @@ def up_array(arr)
   return nil if arr.empty? || arr.any? {|el| el < 0 || el > 9}
   (arr.join.to_i + 1).digits.reverse
 end
+
+def delete_nth(arr, n)
+  new_arr = []
+  arr.each {|el| new_arr << el unless new_arr.count(el) >= n}
+  new_arr
+end
+
+p delete_nth([1,1,1,1],2) # return [1,1]
+  
+p delete_nth([20,37,20,21],1) # return [20,37,21]
