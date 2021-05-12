@@ -120,3 +120,17 @@ def pangram?(string)
   str = string.downcase
   ('a'..'z').all? {|char| str.include?(char)}
 end
+
+def reverse_alternate(string)
+  string.split.map.with_index {|word, i| i.odd? ? word.reverse : word}.join(' ')
+end
+
+p reverse_alternate("Did it work?")
+p reverse_alternate("I really hope it works this time...") # "I yllaer hope ti works siht time..."
+p reverse_alternate("Reverse this string, please!") # "Reverse siht string, !esaelp"
+p reverse_alternate("Have a beer") # "Have a beer"
+p reverse_alternate("") # ""
+# Test.assert_equals(reverse_alternate("I really hope it works this time..."), "I yllaer hope ti works siht time...")
+# Test.assert_equals(reverse_alternate("Reverse this string, please!"), "Reverse siht string, !esaelp")
+# Test.assert_equals(reverse_alternate("Have a beer"), "Have a beer")
+# Test.assert_equals(reverse_alternate(""), "")
