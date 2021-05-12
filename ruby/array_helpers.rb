@@ -9,20 +9,20 @@ class Array
   end
 
   def average
-    self.reduce(:+) / 2
+    self.reduce(:+) / self.size
   end
 
   def sum
     self.reduce(:+)
   end
-end
 
-def even
-  self.select {|n| n.even?}
-end
-
-def odd
-  self.select {|n| n.odd?}
+  def even
+    self.select {|n| n.even?}
+  end
+  
+  def odd
+    self.select {|n| n.odd?}
+  end
 end
 
 numbers = [1, 2, 3, 4, 5]
