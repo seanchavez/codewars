@@ -118,6 +118,5 @@ p delete_nth([20,37,20,21],1) # return [20,37,21]
 # detect pangram
 def pangram?(string)
   str = string.downcase
-  ('a'..'z').each {|char| return false if !str.include?(char)}
-  true
+  ('a'..'z').all? {|char| str.include?(char)}
 end
