@@ -114,3 +114,11 @@ end
 p delete_nth([1,1,1,1],2) # return [1,1]
   
 p delete_nth([20,37,20,21],1) # return [20,37,21]
+
+# detect pangram
+def pangram?(string)
+  alphabet ="abcdefghijklmnopqrstuvwxyz"
+  str = string.downcase
+  alphabet.each_char {|char| return false if !str.include?(char)}
+  true
+end
