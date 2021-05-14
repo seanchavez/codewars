@@ -131,13 +131,11 @@ p reverse_alternate("Reverse this string, please!") # "Reverse siht string, !esa
 p reverse_alternate("Have a beer") # "Have a beer"
 p reverse_alternate("") # ""
 
-def list_squared(a, b)
+def list_squared(m, n)
   list = []
-  (a..b).each do |i|
-    sum_of_squares = (1..i).filter_map {|n| n ** 2 if i % n == 0}.sum
-    if Math.sqrt(sum_of_squares) % 1 == 0
-      list << [i, sum_of_squares]
-    end
+  (m..n).each do |i|
+    sum_of_squares = (1..i).filter_map {|x| x ** 2 if i % x == 0}.sum
+    list << [i, sum_of_squares] if Math.sqrt(sum_of_squares) % 1 == 0  
   end
   list
 end
