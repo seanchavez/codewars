@@ -130,7 +130,17 @@ p reverse_alternate("I really hope it works this time...") # "I yllaer hope ti w
 p reverse_alternate("Reverse this string, please!") # "Reverse siht string, !esaelp"
 p reverse_alternate("Have a beer") # "Have a beer"
 p reverse_alternate("") # ""
-# Test.assert_equals(reverse_alternate("I really hope it works this time..."), "I yllaer hope ti works siht time...")
-# Test.assert_equals(reverse_alternate("Reverse this string, please!"), "Reverse siht string, !esaelp")
-# Test.assert_equals(reverse_alternate("Have a beer"), "Have a beer")
-# Test.assert_equals(reverse_alternate(""), "")
+
+def list_squared(a, b)
+  list = []
+  (a..b).each do |i|
+    sum_of_squares = (1..i).filter_map {|n| n ** 2 if i % n == 0}.sum
+    if Math.sqrt(sum_of_squares) % 1 == 0
+      list << [i, sum_of_squares]
+    end
+  end
+  list
+end
+
+p list_squared(1, 250) # --> [[1, 1], [42, 2500], [246, 84100]]
+p list_squared(42, 250) # --> [[42, 2500], [246, 84100]]
