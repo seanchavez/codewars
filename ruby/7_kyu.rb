@@ -134,7 +134,7 @@ p reverse_alternate("") # ""
 def list_squared(m, n)
   list = []
   (m..n).each do |i|
-    sum_of_squares = (1..i).filter_map {|x| x ** 2 if i % x == 0}.sum
+    sum_of_squares = (1..i).select {|x| i % x == 0}.map {|x| x ** 2}.sum
     list << [i, sum_of_squares] if Math.sqrt(sum_of_squares) % 1 == 0  
   end
   list
