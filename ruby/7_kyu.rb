@@ -156,3 +156,13 @@ end
 p list_squared(1, 250) # --> [[1, 1], [42, 2500], [246, 84100]]
 p list_squared(42, 250) # --> [[42, 2500], [246, 84100]]
 p get_divisors(100)
+
+def url?(str)
+  return true if str =~ /\Ahttps?:\/\/\S+\z/
+  false
+end
+
+p url?('http://launchschool.com')   # -> true
+p url?('https://example.com')       # -> true
+p url?('https://example.com hello') # -> false
+p url?('   https://example.com')    # -> false
