@@ -182,3 +182,13 @@ p fields("Pete \t 201")
 
 p fields("Pete \n 201")
 # -> ['Pete', '\n', '201']
+
+def mystery_math(str)
+  str.sub(/[+\-*\/]/, '?')
+end
+
+p mystery_math('4 + 3 - 5 = 2')
+# -> '4 ? 3 - 5 = 2'
+
+p mystery_math('(4 * 3 + 2) / 7 - 1 = 1')
+# -> '(4 ? 3 + 2) / 7 - 1 = 1'
