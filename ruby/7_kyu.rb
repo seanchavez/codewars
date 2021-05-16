@@ -219,3 +219,9 @@ p danish('apple. cherry. blueberry.')
 p danish('I love pineapple')
 # -> 'I love pineapple'
 
+def format_date(str)
+  str.gsub(/(\d\d\d\d)-(\d\d)-(\d\d)/, '\3.\2.\1')
+end
+
+p format_date('2016-06-17') # -> '17.06.2016'
+p format_date('2016/06/17') # -> '2016/06/17' (no change)
