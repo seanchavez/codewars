@@ -1,15 +1,9 @@
-def encode(str)
-  encoding = {'a' => '1', 'e' => '2', 'i' => '3', 'o' => '4', 'u' => '5'}
-  str.split('').map do |char| 
-    encoding.include?(char) ? encoding[char] : char
-  end.join
+def encode(s)
+  s.tr('aeiou', '12345')
 end
 
-def decode(str)
-  encoding = {'a' => '1', 'e' => '2', 'i' => '3', 'o' => '4', 'u' => '5'}
-  str.split('').map do |char|
-    encoding.has_value?(char) ? encoding.key(char) : char
-  end.join
+def decode(s)
+  s.tr('12345', 'aeiou')
 end
 
 p encode("hello")    # "h2ll4"
