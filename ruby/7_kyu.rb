@@ -225,3 +225,22 @@ end
 p format_date('2016-06-17') # -> '17.06.2016'
 p format_date('2017/05/03') # -> '03.05.2017'
 p format_date('2015/01-31') # -> '2015/01-31' (no change)
+
+def total_keypresses(str)
+  str.chars.reduce(0) do |presses, c|
+    char = c.downcase
+    presses + 1 + case char
+      when 'a'..'c' then %w(a b c).index(char)
+      when 'd'..'f' then %w(d e f).index(char)
+      when 'g'..'i' then %w(g h i).index(char)
+      when 'j'..'l' then %w(j k l).index(char)
+      when 'm'..'o' then %w(m n o).index(char)
+      when 'p'..'s' then %w(p q r s).index(char)
+      when 't'..'v' then %w(t u v).index(char)
+      when 'w'..'z' then %w(w x y z).index(char)
+      else 0
+    end
+  end
+end
+
+p total_keypresses("WHERE DO U WANT 2 MEET L8R")
