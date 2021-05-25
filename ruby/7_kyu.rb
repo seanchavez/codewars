@@ -225,3 +225,20 @@ end
 p format_date('2016-06-17') # -> '17.06.2016'
 p format_date('2017/05/03') # -> '03.05.2017'
 p format_date('2015/01-31') # -> '2015/01-31' (no change)
+
+def dir_reduce(dirs)
+  opposites = {
+    north: 'south',
+    south: 'north',
+    east: 'west',
+    west: 'east'
+  }
+  reduced_dirs = []
+  dirs.each_with_index do |dir, i|
+    reduced_dirs << dir if dirs[(i)..-1].include?(opposites[dir.downcase.to_sym])
+  end
+  reduced_dirs
+end
+
+p dir_reduce(["NORTH", "SOUTH", "EAST", "WEST"])
+p dir_reduce(["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"])
