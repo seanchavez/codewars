@@ -131,32 +131,6 @@ p reverse_alternate("Reverse this string, please!") # "Reverse siht string, !esa
 p reverse_alternate("Have a beer") # "Have a beer"
 p reverse_alternate("") # ""
 
-def list_squared(m, n)
-  list = []
-  (m..n).each do |i|
-    sum_of_squares = get_divisors(i).map {|x| x ** 2}.sum
-    list << [i, sum_of_squares] if Math.sqrt(sum_of_squares) % 1 == 0
-  end
-  list
-end
-
-def get_divisors(num)
-  divisors = []
-  i = 1
-  loop do
-    if num % i == 0
-      num / i == i ? divisors.push(i) : divisors.push(i, num / i)
-    end
-    i += 1
-    break if i > Math.sqrt(num)
-  end
-  divisors
-end
-
-p list_squared(1, 250) # --> [[1, 1], [42, 2500], [246, 84100]]
-p list_squared(42, 250) # --> [[42, 2500], [246, 84100]]
-p get_divisors(100)
-
 def url?(str)
   return true if str =~ /\Ahttps?:\/\/\S+\z/
   false
@@ -235,7 +209,7 @@ def dir_reduce(dirs)
   }
   reduced_dirs = []
   dirs.each_with_index do |dir, i|
-    reduced_dirs << dir if dirs[(i)..-1].include?(opposites[dir.downcase.to_sym])
+    reduced_dirs << dir if dirs[(i + 1)..-1].include?(opposites[dir.downcase.to_sym])
   end
   reduced_dirs
 end
